@@ -52,13 +52,13 @@
 
     <script>
         let min = promt(" Введите число", 15);
-        if (min >= 0 || min <= 15) {
+        if (min >= 0 && min <= 15) {
             alert(" Первая часть ");
-        } else if (min >= 15 || min <= 30) {
+        } else if (min >= 15 && min <= 30) {
             alert(" Вторая часть ");
-        } else if (min > 30 || min <= 45) {
+        } else if (min > 30 && min <= 45) {
             alert(" Третья часть ");
-        } else if (min >= 45 || min <= 60) {
+        } else if (min >= 45 && min <= 60) {
             alert(" Четевертая часть ");
         }
     </script>
