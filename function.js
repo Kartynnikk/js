@@ -3,24 +3,20 @@
 // // Используя оператор ?
 // // Используя оператор ||
 
-let checkAge(age) {
+function checkAge(age) {
     return (age >= 18) ? true : confirm("Родители разрешили?")
 };
 
-let checkAge(age) {
+function checkAge(age) {
     return (age >= 18) || confirm("Родители разрешили?")
 };
 
-let checkAge(age) ? () => true : () confirm("Родители разрешили?");
+function checkAge(age) ? () => true: () confirm("Родители разрешили?");
 
 
 // // Напишите функцию min(a,b), которая возвращает меньшее из чисел a и b.
-function min(a, b) {
-    if (a < b) {
-        return a;
-    } else {
-        return b;
-    }
+function getMin(a, b) {
+    return (a < b) ? a : b
 };
 
 // Напишите функцию, которая принимает 2 числа и возвращает 1, если первое число больше, чем второе; -1, если первое число меньше, чем второе, и 0, если числа равны.
@@ -28,27 +24,22 @@ function min(a, b) {
 function getVar(a, b) {
     if (a > b) {
         return 1;
-    } else if (b > a) {
+    } else(b > a) {
         return -1;
-    } else {
-        return 0;
     };
 }
 console.log(getVar(2, 3));
 
-let getVar = (a, b) ? (a > b) =>
-    return 1: (b > a) =>
-        return -1: return 0;
+let getVar = (a, b) => {
+    return (a > b) ? 1 : (b > a) ? -1
+};
 
 // Напишите функцию, которая принимает 2 параметра: длину и ширину прямоугольника и 
 // вычисляет его площадь.Если в функцию передали 1 параметр, то функция вычисляет площадь квадрата.
 
-function getSquare(l, w = l) {
-    if (l >= 0 && w >= 0) {
-        return l * w;
-    } else {
-        return "Mistake";
-    }
+function getSquare(length, width = l) {
+    if (length >= 0 && width >= 0) ?
+        return length * width: "Mistake";
 };
 console.log(getSquare(5, 2));
 console.log(getSquare(10));
