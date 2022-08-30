@@ -59,7 +59,7 @@ for (let n = 11; n <= 33; n++) {
 
 
 for (let n = 0; n <= 100; n++) {
-    if (n % 2 == 0) {
+    if (!(n % 2)) {
         alert(n);
     }
 }
@@ -75,7 +75,7 @@ alert(sum);
 let a = 1000,
     n = 0;
 while (a >= 50) {
-    a = a / 2;
+    a /= 2;
     n++;
 }
 console.log("Итераций: " + n + ", получилось число " + a);
@@ -121,36 +121,36 @@ let a = 4;
 while (a <= 400) {
     alert(a);
     a++
-}
+};
 
 let a = 4;
 while (a <= 400) {
     console.log(a);
     a++
-}
+};
 
 let a = 4;
 while (a <= 13) {
     console.log(a);
     a + 3;
-}
+};
 
 let a = 654;
 while (!a) {
     console.log(a);
     a--;
-}
+};
 
 let a = -4;
 while (a <= 100) {
     console.log(a);
     a + 2;
-}
+};
 
 for (let a = 1; a <= 10; a++) {
     console.log(a * 7);
-}
+};
 
 for (let a = 1000; a <= 2000; a++) {
     console.log("&" + "#" + a);
-}
+};
