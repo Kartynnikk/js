@@ -23,6 +23,30 @@ console.log(calculator.read());
 console.log(calculator.mul());
 console.log(calculator.sum());
 
+
+// Использование функции-конструктор
+
+function Calculator() {
+    this.read = function() {
+        this.a = +prompt("Введите значение а");
+        this.b = +prompt("Введите значение b")
+    };
+    this.sum = function() {
+        return this.a + this.b;
+    };
+
+    this.mul = function() {
+        return this.a * this.b;
+    };
+};
+
+let calculator = new Calculator();
+
+console.log(calculator.read());
+console.log(calculator.mul());
+console.log(calculator.sum());
+
+
 // создать обьект чайник. У него должны быть свойства: модель/производитель, дата производства, срок годности, срок гарантии, цвет, высота, 
 // вместимость (сами решаете это число/строка или обьект) и СОСТОЯНИЕ (включен или выключен - isOn) , сколько раз уже включали чайник и  
 // 3 метода - включить чайник, выключить чайник, вывести данные о чайнике и очистить 
@@ -62,7 +86,7 @@ console.log(teapot.write());
 console.log(teapot.clean());
 
 
-// Задача про зарплату
+// // Задача про зарплату
 
 let employee = {
     firstname: "John",
@@ -83,3 +107,19 @@ console.log(worker.lastname);
 console.log(worker.rate);
 console.log(worker.workdays);
 console.log(worker.getCurrentSalary());
+
+// Задача
+
+function Accumulator(startingValue) {
+    this.value = startingValue;
+
+    this.read = function() {
+        this.value += +prompt("Введите значение а", 0);
+    };
+}
+
+let accumulator = new Accumulator(1);
+
+accumulator.read();
+
+console.log(accumulator.value);
