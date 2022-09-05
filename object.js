@@ -60,3 +60,26 @@ console.log(teapot.turnon());
 console.log(teapot.turnoff());
 console.log(teapot.write());
 console.log(teapot.clean());
+
+
+// Задача про зарплату
+
+let employee = {
+    firstname: "John",
+    lastname: "Smith",
+    rate: 5,
+    workdays: 22,
+    getCurrentSalary() {
+        return this.rate * this.workdays;
+    }
+};
+
+const worker = employee;
+
+worker.firstname = "Ira", "Petrova", 5, 25;
+
+console.log(worker.firstname);
+console.log(worker.lastname);
+console.log(worker.rate);
+console.log(worker.workdays);
+console.log(worker.getCurrentSalary());
