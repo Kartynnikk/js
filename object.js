@@ -56,7 +56,7 @@
 
 let kettle = {
     color: "white",
-    "is on": true,
+    isOn: true,
     manufacturer: "Samsung",
     model: "B12/84",
     manufactureDate: "12.08.2022",
@@ -65,39 +65,30 @@ let kettle = {
     capacity: 2,
 
     setUsageYear() {
-        this.time = +prompt("Сколько раз включали чайник?", 6);
+        this.ammountOfUsageTimes = +prompt("Сколько раз включали чайник?", 6);
     },
 
     turnon() {
-        return this["is on"];
+        for (let i = 1; i > this.ammountOfUsageTimes; i++) {
+            console.log(this.i);
+        }
+        return this.ammountOfUsageTimes + 1;
     },
 
     turnoff() {
-        return this["is on"] = false;
-    },
-
-    write() {
-        return this;
+        return this.isOn = false;
     },
 
     clean() {
-        for (key in kettle) {
-            delete this.time;
-        }
+        this.ammountOfUsageTimes = 0;
         return this;
     },
-
-    claculate() {
-        return this.time + this.turnon();
-    }
 };
 
 kettle.setUsageYear();
 console.log(kettle.turnon());
 console.log(kettle.turnoff());
-console.log(kettle.write());
 console.log(kettle.clean());
-console.log(kettle.claculate());
 
 
 // // Задача про зарплату
