@@ -65,30 +65,35 @@ let kettle = {
     capacity: 2,
 
     setUsageYear() {
-        this.ammountOfUsageTimes = +prompt("Сколько раз включали чайник?", 6);
+        this.amountOfUsageTimes = +prompt("Сколько раз включали чайник?", 6);
     },
 
-    turnon() {
-        for (let i = 1; i > this.ammountOfUsageTimes; i++) {
-            console.log(this.i);
-        }
-        return this.ammountOfUsageTimes + 1;
+    turnOn() {
+        this.isOn;
+        console.log(this.amountOfUsageTimes + 1);
     },
 
-    turnoff() {
-        return this.isOn = false;
+    turnOff() {
+        console.log(this.isOn = false);
     },
 
     clean() {
-        this.ammountOfUsageTimes = 0;
+        this.amountOfUsageTimes = 0;
         return this;
+    },
+
+    getAmountOfUsageTime() {
+        let sum;
+        console.log(sum = this.amountOfUsageTimes + 1);
     },
 };
 
 kettle.setUsageYear();
-console.log(kettle.turnon());
-console.log(kettle.turnoff());
+console.log(kettle.turnOn());
+console.log(kettle.turnOff());
+console.log(kettle.getAmountOfUsageTime())
 console.log(kettle.clean());
+
 
 
 // // Задача про зарплату
