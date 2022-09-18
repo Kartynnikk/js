@@ -7,16 +7,20 @@
 let calc = {
     read() {
         this.a = +prompt("Введите значение а");
-        this.b = +prompt("Введите значение b")
+        this.b = +prompt("Введите значение b");
     },
 
     sum() {
-        return this.a + this.b;
+        if (this.a && this.b) {
+            return this.a + this.b;
+        }
     },
 
     mul() {
-        return this.a * this.b;
-    }
+        if (this.a && this.b) {
+            return this.a * this.b;
+        }
+    },
 };
 
 console.log(calc.read());
@@ -110,15 +114,12 @@ let employee = {
     }
 };
 
-const worker = employee;
 
-worker.firstname = "Ira", "Petrova", 5, 25;
-
-console.log(worker.firstname);
-console.log(worker.lastname);
-console.log(worker.rate);
-console.log(worker.workdays);
-console.log(worker.getCurrentSalary());
+console.log(employee.firstname = "Ira");
+console.log(employee.lastname = "Petrova");
+console.log(employee.rate);
+console.log(employee.workdays);
+console.log(employee.getCurrentSalary(5, 25));
 
 // // Задача
 
