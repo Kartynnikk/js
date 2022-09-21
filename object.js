@@ -11,19 +11,19 @@ let calc = {
     },
 
     sum() {
-        if (this.a && this.b) {
+        if (typeof Number(this.a && this.b)) {
             return this.a + this.b;
         }
     },
 
     mul() {
-        if (this.a && this.b) {
+        if (typeof Number(this.a && this.b)) {
             return this.a * this.b;
         }
     },
 };
 
-console.log(calc.read());
+calc.read();
 console.log(calc.mul());
 console.log(calc.sum());
 
