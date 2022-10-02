@@ -5,7 +5,7 @@
 // // Удалите первый элемент массива и покажите его.
 // // Вставьте Рэп и Регги в начало массива.
 
-let styles = ["Jaz", "Bluz"];
+const styles = ["Jaz", "Bluz"];
 styles.push("Rock");
 console.log(styles);
 
@@ -25,21 +25,21 @@ console.log(styles);
 // P.S. Ноль 0 – считается числом, не останавливайте ввод значений при вводе «0».
 
 
-function sumInput() {
-    let num = [];
+function getSumInput() {
+    const num = [];
     while (true) {
-        let a = +prompt("Введите число", 6);
+        const a = +prompt("Введите число", 6);
         if (!a) break;
         num.push(a);
     }
 
-    let sum = 0;
+    const sum = 0;
     for (let number of num) {
         sum += number;
     }
     return sum;
 }
-console.log(sumInput());
+console.log(getSumInput());
 
 // На входе массив чисел, например: arr = [1, -2, 3, 4, -9, 6].
 // Задача: найти непрерывный подмассив в arr, сумма элементов в котором максимальна.
@@ -48,10 +48,10 @@ console.log(sumInput());
 
 
 function getMaxSubSum(arr) {
-    let maxSum = 0;
+    const maxSum = 0;
 
     for (let i = 0; i < arr.length; i++) {
-        let sumArr = 0;
+        const sumArr = 0;
         for (let j = i; j < arr.length; j++) {
             sumArr += arr[j];
             maxSum = Math.max(maxSum, sumArr);
@@ -73,7 +73,7 @@ console.log(getMaxSubSum([1, 2, 3]));
 function camelize(str) {
     return str
         .split("-")
-        .map((word, index) => index == 0 ? word : word[0].toUpperCase() + word.slice(1))
+        .map((word, index) => index === 0 ? word : word[0].toUpperCase() + word.slice(1))
         .join(" ")
 };
 
@@ -83,22 +83,20 @@ console.log(camelize("my-short-string"))
 // или равными b и возвращает результат в виде массива.
 // Функция должна возвращать новый массив и не изменять исходный.
 
-let arr = [5, 3, 8, 1];
+const arr = [5, 3, 8, 1];
 
-function filterRange(arr, a, b) {
-    return arr.filter(item => (a <= item && b <= item));
-}
+const filterRange = (arr, a, b) => arr.filter(item => (a <= item && b <= item));
 
 console.log(arr);
 
-let result = filterRange(arr, 1, 5);
+const result = filterRange(arr, 1, 5);
 console.log(result);
 
 // Напишите функцию filterRangeInPlace(arr, a, b), которая принимает массив arr и удаляет из него все значения кроме тех, которые находятся между a и b.
 // То есть, проверка имеет вид a≤ arr[i]≤ b.
 // Функция должна изменять принимаемый массив и ничего не возвращать.
 
-let arr = [5, 3, 8, 1];
+const arr = [5, 3, 8, 1];
 
 function filterRangeInPlace(arr, a, b) {
     return arr.filter(item => (a <= item && item <= b));
@@ -107,7 +105,7 @@ function filterRangeInPlace(arr, a, b) {
 console.log(filterRangeInPlace(arr, 1, 4));
 
 // Сортировать по убыванию
-let arr = [5, 2, 1, -10, 8];
+const arr = [5, 2, 1, -10, 8];
 
 arr.sort((a, b) => b - a);
 
@@ -116,13 +114,13 @@ console.log(arr);
 // У нас есть массив строк arr.Нужно получить отсортированную копию, но оставить arr неизменённым.
 // Создайте функцию copySorted(arr), которая будет возвращать такую копию.
 
-let arr = ["HTML", "JavaScript", "CSS"];
+const arr = ["HTML", "JavaScript", "CSS"];
 
 function copySorted(arr) {
-    return arr.slice().sort()
+    return arr.slice().sort((a, b) => a - b)
 }
 
-let sorted = copySorted(arr);
+const sorted = copySorted(arr);
 
 console.log(sorted);
 console.log(arr);
@@ -138,61 +136,59 @@ function Calculator() {
 
     this.calculate = function(str) {
 
-        let spliter = str.split(' '),
+        const spliter = str.split(' '),
             a = +spliter[0],
-            op = spliter[1],
+            plus = spliter[1],
             b = +spliter[2]
 
-        if (!this.methods[op] || isNaN(a) || isNaN(b)) {
+        if (!this.methods[plus] || isNaN(a) || isNaN(b)) {
             return NaN;
         }
 
-        return this.methods[op](a, b);
+        return this.methods[plus](a, b);
     }
 
 }
-let calc = new Calculator;
+const calc = new Calculator;
 
 console.log(calc.calculate("3 - 9"));
 
 // У вас есть массив объектов user, и в каждом из них есть user.name.Напишите код, который преобразует их в массив имён.
 
-let vasya = { name: "Вася", age: 25 };
-let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 28 };
+const vasya = { name: "Вася", age: 25 };
+const petya = { name: "Петя", age: 30 };
+const masha = { name: "Маша", age: 28 };
 
-let users = [vasya, petya, masha];
+const users = [vasya, petya, masha];
 
-let names = users.map(item => item.name)
+const names = users.map(item => item.name)
 
 console.log(names);
 
 // У вас есть массив объектов user, и у каждого из объектов есть name, surname и id.
 // Напишите код, который создаст ещё один массив объектов с параметрами id и fullName, где fullName– состоит из name и surname.
 
-let vasya = { name: "Вася", surname: "Пупкин", id: 1 };
-let petya = { name: "Петя", surname: "Иванов", id: 2 };
-let masha = { name: "Маша", surname: "Петрова", id: 3 };
+const vasya = { name: "Вася", surname: "Пупкин", id: 1 };
+const petya = { name: "Петя", surname: "Иванов", id: 2 };
+const masha = { name: "Маша", surname: "Петрова", id: 3 };
 
-let users = [vasya, petya, masha];
+const users = [vasya, petya, masha];
 
-let usersMapped = users.map(user => ({
-    fullname: `${ user.name } ${ user.surname }`
+const usersMapped = users.map(user => ({
+    fullname: `${user.name } ${user.surname }`
 }));
 
 console.log(usersMapped[2]);
 
 // Напишите функцию sortByAge(users), которая принимает массив объектов со свойством age и сортирует их по нему.
 
-let vasya = { name: "Вася", age: 25 };
-let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 28 };
+const vasya = { name: "Вася", age: 25 };
+const petya = { name: "Петя", age: 30 };
+const masha = { name: "Маша", age: 28 };
 
-let arr = [vasya, petya, masha];
+const arr = [vasya, petya, masha];
 
-function sortByAge(arr) {
-    arr.sort((a, b) => a.age - b.age);
-}
+const sortByAge = (arr) => arr.sort((a, b) => a.age - b.age);
 
 console.log(sortByAge(arr))
 
@@ -202,11 +198,9 @@ console.log(arr[2].name);
 
 // Напишите функцию shuffle(array), которая перемешивает(переупорядочивает случайным образом) элементы массива.
 
-let arr = [1, 2, 3];
+const arr = [1, 2, 3];
 
-function shuffle(arr) {
-    arr.sort(() => Math.random());
-}
+const shuffle = (arr) => arr.sort(() => Math.random());
 
 shuffle(arr);
 console.log(arr);
@@ -215,12 +209,11 @@ console.log(arr);
 
 // Напишите функцию getAverageAge(users), которая принимает массив объектов со свойством age и возвращает средний возраст.
 // Формула вычисления среднего арифметического значения: (age1 + age2 + ... + ageN) / N.
+const vasya = { name: "Вася", age: 25 };
+const petya = { name: "Петя", age: 30 };
+const masha = { name: "Маша", age: 29 };
 
-let vasya = { name: "Вася", age: 25 };
-let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 29 };
-
-let arr = [vasya, petya, masha];
+const arr = [vasya, petya, masha];
 
 function getAverageAge(arr) {
     return arr.reduce((sum, arr) => sum + arr.age) / arr.age;
@@ -233,23 +226,23 @@ function getAverageAge(arr) {
     return arr.reduce((sum, count) => sum + count.age, 0) / arr.length;
 }
 
-let vasya = { name: "Вася", age: 25 };
-let petya = { name: "Петя", age: 30 };
-let masha = { name: "Маша", age: 29 };
+const vasya = { name: "Вася", age: 25 };
+const petya = { name: "Петя", age: 30 };
+const masha = { name: "Маша", age: 29 };
 
-let arr = [vasya, petya, masha];
+const arr = [vasya, petya, masha];
 
 console.log(getAverageAge(arr));
 
 // Пусть arr– массив строк.
 // Напишите функцию unique(arr), которая возвращает массив, содержащий только уникальные элементы arr.
 
-let strings = ["кришна", "кришна", "харе", "харе",
+const strings = ["кришна", "кришна", "харе", "харе",
     "харе", "харе", "кришна", "кришна", ":-O"
 ];
 
 function unique(strings) {
-    let special = [];
+    const special = [];
 
     for (let str of strings) {
         if (!special.includes(str)) {
@@ -264,20 +257,19 @@ console.log(unique(strings))
 // Допустим, мы получили массив пользователей в виде { id: ..., name: ..., age: ... }.
 // Создайте функцию groupById(arr), которая создаст из него объект с id в качестве ключа и элементами массива в качестве значений.
 
-let users = [
+const users = [
     { id: 'john', name: "John Smith", age: 20 },
     { id: 'ann', name: "Ann Smith", age: 24 },
     { id: 'pete', name: "Pete Peterson", age: 31 },
 ];
 
-function groupById(arr) {
-    return arr.reduce((object, users) => {
-        object[users.id] = users;
-        return object;
-    })
-}
+const groupById = (arr) => arr.reduce((object, users) => {
+    object[users.id] = users;
+    return object;
+})
 
-let usersById = groupById(users);
+
+const usersById = groupById(users);
 
 console.log(usersById);
 
@@ -290,7 +282,7 @@ console.log(usersById);
 // for сформируйте строку '123456789'
 // и запишите ее в переменную str.
 
-let str = " ";
+const str = " ";
 
 for (let i = 1; i <= 10; i++) {
     str += i;
@@ -317,7 +309,7 @@ console.log(str);
 
 // 1. Нарисуйте пирамиду, как показано ниже только у вашей пирамиды должно быть 12 рядов:
 
-let a = " ";
+const a = " ";
 for (let i = 1; i <= 12; i++) {
     a += "*"
     document.write(a.toString() + "<br>");
@@ -332,7 +324,7 @@ for (let i = 1; i < 10; i++) {
 
 // 3. Нарисуйте пирамиду, как показано на рисунке, воспользовавшись циклом
 
-let a = " ";
+const a = " ";
 for (let i = 1; i <= 12; i++) {
     a += "**"
     document.write(a.toString() + "<br>");
@@ -347,7 +339,7 @@ for (let i = 1; i < 10; i++) {
 
 // 5. Напишите функцию goThroughArray(list), которая проходится по массиву и выводит каждый элемент.
 
-let list = "1,2,3"
+const list = "1,2,3"
 
 function goThroughArray(list) {
     return list.split(",")
@@ -357,29 +349,29 @@ console.log(goThroughArray(list))
 
 // 6. Даны два массива: ['a', 'b', 'c'] и[1, 2, 3].Объедините их вместе.
 
-let arr = ['a', 'b', 'c'];
+const arr = ['a', 'b', 'c'];
 
-let array = [1, 2, 3];
+const array = [1, 2, 3];
 
 console.log(arr.concat(array));
 
 
 // 7. Дан массив['a', 'b', 'c'].Добавьте ему в конец элементы 1, 2, 3.
 
-let arr = ['a', 'b', 'c'];
+const arr = ['a', 'b', 'c'];
 
 console.log(arr.concat([1, 2, 3]));
 
 // 8. Дан массив[1, 2, 3, 4, 5].С помощью метода splice преобразуйте массив в[1, 4, 5].
 
-let arr = [1, 2, 3, 4, 5];
+const arr = [1, 2, 3, 4, 5];
 
 arr.splice(1, 2);
 console.log(arr);
 
 // 9. Дан массив[1, 2, 3, 4, 5].С помощью метода splice запишите в новый массив элементы[2, 3, 4].
 
-let arr = [1, 2, 3, 4, 5];
+const arr = [1, 2, 3, 4, 5];
 
 arr.splice(0, 1);
 arr.splice(3);
@@ -387,13 +379,13 @@ console.log(arr);
 
 // 10. Дан массив[1, 2, 3, 4, 5].С помощью метода splice сделайте из него массив[1, 2, 3, 'a', 'b', 'c', 4, 5].
 
-let arr = [1, 2, 3, 4, 5];
+const arr = [1, 2, 3, 4, 5];
 arr.splice(2, 2, 'a', 'b', 'c');
 console.log(arr);
 
 // 11. Дан массив[1, 2, 3, 4, 5].С помощью метода splice сделайте из него массив[1, 'a', 'b', 2, 3, 4, 'c', 5, 'e'].
 
-let arr = [1, 2, 3, 4, 5];
+const arr = [1, 2, 3, 4, 5];
 
 arr.splice(1, 0, 'a', 'b');
 console.log(arr);
@@ -412,7 +404,7 @@ console.log(arr);
 
 // 13. Дан объект { js: 'test', jq: 'hello', css: 'world' }.Получите массив его ключей.
 
-let obj = {
+const obj = {
     js: 'test',
     jq: 'hello',
     css: 'world',
@@ -422,107 +414,106 @@ console.log(Object.keys(obj));
 
 // 14. Дана строка, например, '123456'.Переверните эту строку(сделайте из нее '654321') не используя цикл.
 
-let str = "123456";
+const str = "123456";
 
 result = str.split("").reverse().join("");
 
 console.log(result);
 
 // 15. Дана строка.Сделайте заглавным первый символ этой строки не используя цикл.Найдите два решения
-let str = "hello";
+const str = "hello";
 
 result = str[0].toUpperCase() + str.slice(1);
 
 console.log(result);
 
 // 16. Проверьте, что строка начинается на http: //.
+const str = "https://docs.google.com/document/d/1EMA9Nm/edit";
 
-let str = "https://docs.google.com/document/d/1EMA9Nm/edit";
+console.log(str.startsWith("https:"));
 
-console.log(str.split("//"));
-
-let getResult = (str) => (str[0] === "http:");
+const getResult = (str) => (str[0] === "http:");
 
 console.log(getResult(str));
 
 // 17. Проверьте, что строка заканчивается на.html
 
-let str = " https://github.com/Kartynnikk/js.html";
+const str = " https://github.com/Kartynnikk/js.html";
 
-let getResult = (str) => str.includes(".html");
+const getResult = (str) => str.endsWith(".html");
 
 console.log(getResult(str));
 
 // 18. Дан массив с числами.Проверьте, что в этом массиве есть число 5. Если есть - выведите 'да', а если нет - выведите 'нет'.
 
-let num = [1, 2, 3, 4, 5];
+const num = [1, 2, 3, 4, 5];
 
-let getResult = (num) => num.includes(5) ? console.log("YES") : console.log("NO");
+const getResult = (num) => num.includes(5) ? console.log("YES") : "NO";
 
 console.log(getResult(num));
 
 // 19. Дано число, например 31. Проверьте, что это число не делится ни на одно другое число кроме себя самого и единицы.
 // То есть в нашем случае нужно проверить, что число 31 не делится на все числа от 2 до 30. Если число не делится - выведите 'false', а если делится - выведите 'true'.
 
-let num = 31;
+const num = 31;
 
 for (let i = 2; i <= 30; i++) {
 
-    (!(num % i === 0)) ? console.log("false"): console.log("true");
+    (!(num % i)) ? console.log("false"): console.log("true");
 };
 
 // 20. Дан массив с числами.Проверьте, есть ли в нем два одинаковых числа подряд.Если есть - выведите 'да', а если нет - выведите 'нет'
 
-let arr = [1, 2, 2, 3, 4, 8, 8];
+const arr = [1, 2, 2, 3, 4, 8, 8];
 
 for (let i = 0; i < arr.length; i++) {
-
     arr[i] === arr[i + 1] ? console.log("Yes") : console.log("No");
 };
 
-// 21. Заполните массив следующим образом: в первый элемент запишите '1', во второй '22', в третий '333'
-// и так далее(два цикла)
+const arr = [];
 
-function fillArray(num, count) {
-    let arr = [];
-
-    for (let i = 1; i <= count; i++) {
-
-        for (let j = 1; j < i; j++) {
-            arr[i].push();
-        }
+for (let i = 0; i < 6; i++) {
+    for (let j = 0; j < i; j++) {
+        arr.push(i) * j;
     }
-    return arr;
 }
-console.log(fillArray(0, 5));
 
-// неправильно
-
-// let arr = [];
-
-// for (let i = 0; i < 10; i++) {
-//     let x = 'x'
-//     arr[i].push()
-// }
+console.log(arr);
 
 // 22. Дан массив чисел, найдите в нем максимальное число
 
-let arr = [1, 2, 3, 8, 6];
+const arr = [1, 2, 3, 8, 6];
 
-console.log(Math.max.apply(null, arr));
+let max = 0;
+
+for (let num of arr) {
+    if (num > max) {
+        max = num;
+    }
+}
+
+console.log(max);
 
 // 23. Дан массив чисел, найдите в нем минимальное число
 
-let arr = [1, 2, 3, 8, 6];
+const arr = [1, 2, 3, 8, 6];
 
-console.log(Math.min.apply(null, arr));
+let min = Infinity;
+
+for (let num of arr) {
+    if (num < min) {
+        min = num;
+    }
+}
+
+console.log(min);
 
 
 // 24. Дан массив чисел, найдите среднее арифметическое всех чисел
 
-let arr = [1, 2, 3, 8, 6];
+const arr = [1, 2, 3, 8, 6];
 
-let getResult = (arr) => arr.reduce((sum, count) => sum + count) / arr.length;
+const getResult = (arr) => arr.reduce((sum, count) => sum + count) / arr.length;
 
 console.log(getResult(arr));
 
@@ -530,7 +521,7 @@ console.log(getResult(arr));
 
 
 function fill(arraySize, value) {
-    let arr = [];
+    const arr = [];
 
     for (let i = 0; i < value; i++) {
         arr.push(arraySize)
@@ -543,7 +534,7 @@ console.log(fill("a", 3));
 // 26. Reverse.Напишите функцию, которая разворачивает массив в обратном порядке.Пожалуйста, не используйте array.reverse(), чтобы сделать задачу более интересной.
 
 function reverse(array) {
-    let arr = [];
+    const arr = [];
 
     for (let i = array.length - 1; i >= 0; i--) {
         arr.push(array[i]);
@@ -566,7 +557,7 @@ console.log(compact(str));
 
 function fromPairs(str, num) {
     if (Array.isArray(num)) {
-        str[num[0]] = num[1]
+        str[num[0]] = num[1];
     }
     return str;
 };
@@ -576,7 +567,7 @@ console.log(fromPairs(["a", 1], ["b", 2]));
 // 29. Without.Напишите функцию, возвращает новый массив без предоставленных значений.Используйте примитивные типы.
 
 function without(arr, argument) {
-    let result = [arr];
+    const result = [arr];
 
     for (let i = 1; i < argument.length; i++) {
         result = result.filter((item) => item !== argument[i])
@@ -588,14 +579,14 @@ console.log(without(1, 2, 3, 5, 5, 6, 2));
 
 // 30. Unique.Напишите функцию, которая убирает повторяющиеся значения.
 
-let arr = [1, 2, 3, 5, 5, 6, 8, 8];
+const arr = [1, 2, 3, 5, 5, 6, 8, 8];
 
-let unique = (arr) => arr.filter((item, index) => arr.indexOf(item) === index);
+const unique = (arr) => arr.filter((item, index) => arr.indexOf(item) === index);
 
 console.log(unique(arr));
 
 // 31.isEqual. Напишите функцию, которая сравнивает два массива и возвращает true, если они идентичны.
 
-let isEqual = (arr1, arr2) => arr1.length === arr2.length ? true : false;
+const isEqual = (arr1, arr2) => arr1.length === arr2.length ? true : false;
 
 console.log(isEqual([1, 2, 3], [1, 2, 3]));
