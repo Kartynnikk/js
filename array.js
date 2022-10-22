@@ -448,7 +448,7 @@ console.log(getResult(str));
 
 const num = [1, 2, 3, 4, 5];
 
-const getResult = (num) => num.includes(5) ? console.log("YES") : "NO";
+const getResult = (num) => num.includes(5);
 
 console.log(getResult(num));
 
@@ -459,7 +459,7 @@ const num = 31;
 
 for (let i = 2; i <= 30; i++) {
 
-    (!(num % i)) ? console.log("false"): console.log("true");
+    console.log(!(num % i));
 };
 
 // 20. Дан массив с числами.Проверьте, есть ли в нем два одинаковых числа подряд.Если есть - выведите 'да', а если нет - выведите 'нет'
@@ -467,7 +467,7 @@ for (let i = 2; i <= 30; i++) {
 const arr = [1, 2, 2, 3, 4, 8, 8];
 
 for (let i = 0; i < arr.length; i++) {
-    arr[i] === arr[i + 1] ? console.log("Yes") : console.log("No");
+    console.log(arr[i] === arr[i + 1]);
 };
 
 const arr = [];
@@ -587,6 +587,173 @@ console.log(unique(arr));
 
 // 31.isEqual. Напишите функцию, которая сравнивает два массива и возвращает true, если они идентичны.
 
-const isEqual = (arr1, arr2) => arr1.length === arr2.length ? true : false;
+const isEqual = (arr1, arr2) => arr1.length === arr2.length;
 
 console.log(isEqual([1, 2, 3], [1, 2, 3]));
+
+// 32. Flatten. Напишите функцию, которая преобразует глубокий массив в одномерный. 
+// Пожалуйста, не используйте array.flat(), чтобы сделать задачу интереснее. (рекурсия)
+
+const arr = [1, 2, [3, 4, [5, 6]]];
+
+const getFlatten = (arr) => {
+    let arr2 = [];
+    for (let i = 0; i < arr.length; i++) {
+        Array.isArray(arr[i]) ? arr2 = arr.concat(getFlatten(arr[i])) : arr2.push(arr[i])
+    }
+    return arr2;
+}
+
+console.log(getFlatten(arr));
+
+// 33. Chunk. Напишите функцию, которая разделяет массив на части заданного размера.
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+
+const getChunk = (arr, size) => {
+    let arr2 = [];
+    let index = 0;
+
+    while (index < arr.length) {
+        arr2.push(arr.slice(index, index + size))
+        index += size;
+    }
+    return arr2;
+}
+
+console.log(getChunk(arr, 2));
+
+// 34. Дан двухмерный массив с числами, например[[1, 2, 3], [4, 5], [6]].
+// Найдите сумму элементов этого массива.Массив, конечно же, может быть произвольным.
+
+const arr = [
+    [1, 2, 3],
+    [4, 5],
+    [6]
+];
+
+const arr2 = arr.flat(2);
+
+console.log(arr2.reduce((sum, count) => sum + count));
+
+// 35. Дан массив с числами.Создайте из него новый массив, где останутся лежать только положительные числа.
+// Создайте для этого вспомогательную функцию isPositive(), которая параметром будет принимать число и возвращать true, если число положительное, и false - если отрицательное.
+
+const arr = [1, 2, 3, 4, 5, 6];
+
+const isPositive = (arr) => {
+    let arr2 = [];
+
+    for (let i = 0; i < arr.length; i++) {
+        (arr[i] % 2 === 0) ? arr2.push(arr[i]): arr[i];
+    }
+    return arr2;
+}
+
+console.log(isPositive(arr));
+
+// 1. Дан массив с числами. Выведите последовательно его элементы используя рекурсию и не используя цикл.
+
+const arr = [1, 2, 3, 4, 5, 6];
+
+function getResult(i) {
+    console.log(arr[i++]);
+
+    if (i < arr.length) {
+        getResult(i);
+    }
+}
+
+console.log(getResult(0));
+
+// 2. Дано число. Сложите его цифры. Если сумма получилась более 9-ти, опять сложите его цифры.
+//  И так, пока сумма не станет однозначным числом (9 и менее).
+
+const str = "15";
+
+const getSum = (str) => {
+    const arr = str.split("");
+    let sum = 0;
+
+    for (let i = 0; i < arr.length; i++) {
+        sum += parseInt(arr[i]);
+    }
+    return (sum > 9) ? isSumLess(sum) : sum;
+}
+
+console.log(getSum(str));
+
+/ Задание: есть массив [5, 12, 2, 7, 6, 9, 19, 25, 4, 1, 3]
+// отсортировать по возрастанию написав алгоритм сортировки вставками.
+
+const arr = [5, 12, 2, 7, 6, 9, 19, 25, 4, 1, 3];
+
+const getResult = arr => {
+    for (let i = 0; i < arr.length; i++) {
+        const current = arr[i];
+        console.log(arr[i])
+
+        let j = i;
+
+
+        while (j > 0 && arr[j - 1] > current) {
+            arr[j] = arr[j - 1];
+            j--;
+        }
+        arr[j] = current;
+
+    }
+    return arr;
+};
+
+
+console.log(getResult(arr));
+
+// Задание: есть массив [5, 12, 2, 7, 6, 9, 19, 25, 4, 1, 3]
+// отсортировать по возрастанию(1) и по убыванию(2) написав алгоритм сортировки пузырьком.
+
+const arr = [5, 12, 2, 7, 6, 9, 19, 25, 4, 1, 3];
+
+const getResult = arr => {
+    let flag = false;
+    for (let i = 0; i < arr.length; i++) {
+        for (let j = 0; j < arr.length - 1 - i; j++) {
+            if (arr[j] > arr[j + 1]) {
+                let current = arr[j];
+
+                arr[j] = arr[j + 1];
+
+                arr[j + 1] = current;
+                flag = true;
+            }
+        }
+        if (!flag) break;
+    }
+    return arr;
+};
+
+
+console.log(getResult(arr));
+
+// Бинарный поиск
+
+const arr = [1, 8, 2, 6, 21, 17];
+
+const arr2 = arr.sort((a, b) => a - b);
+
+console.log(arr2);
+
+const getResult = (num, target) => {
+    let left = 0;
+    let rigth = num.length - 1;
+    let midle;
+
+    while (left >= rigth) {
+        midle = Math.round((rigth - left) / 2 + left);
+
+        return (num[midle] === target) ? midle : (target <= num[midle]) ? rigth = midle - 1 : left = midle + 1;
+    }
+    return -1;
+}
+
+console.log(getResult(arr2, 2));
