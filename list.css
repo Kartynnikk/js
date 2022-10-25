@@ -1,0 +1,53 @@
+body {
+    background-color: rgba(255, 255, 0, 0.657);
+}
+
+#conteiner {
+    background-color: wheat;
+    width: 600px;
+    height: 1000px;
+    margin: auto;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.shoppingList {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+header {
+    font-weight: bold;
+    font-size: x-large;
+    font-family: inherit;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    padding-left: 80px;
+}
+
+img {
+    width: 40px;
+    height: 40px;
+}
+
+.input {
+    border-bottom: 3px solid rgb(194, 194, 194);
+    width: 400px;
+    opacity: initial;
+}
+
+input {
+    outline: 0;
+    border: 0;
+    width: 380px;
+    height: 35px;
+    font-size: x-large;
+    font-family: "mumblers_demoregular";
+    background-color: wheat;
+}
