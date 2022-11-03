@@ -36,8 +36,12 @@ img {
     height: 40px;
 }
 
+<<<<<<< HEAD
 #input {
     margin-left: 18px;
+=======
+.input {
+>>>>>>> bed22802a32cd390ba7baaf73ecbf7e6bdc91b17
     border-bottom: 3px solid rgb(194, 194, 194);
     width: 400px;
     opacity: initial;
